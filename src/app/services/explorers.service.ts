@@ -60,7 +60,7 @@ export class ExplorersService {
         'I have exposed the contract instance on window.contractInstance if you want to have a poke around'
       );
       console.log('Try window.contractInstance.options.address');
-      console.log('Try window.contractInstance.options.methods');
+      console.log('Try window.contractInstance.methods');
       console.log(
         'HINT: Methods that change the state of the contract, like addChampion(), require a signed transaction to be sent'
       );
