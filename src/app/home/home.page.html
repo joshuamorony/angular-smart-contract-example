@@ -1,20 +1,93 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="grid-container">
+    <div>
+      <ion-card class="champions">
+        <ion-card-header>
+          <ion-card-title
+            ><h2>
+              <ion-icon name="trophy-outline"></ion-icon> Web3 Champions
+            </h2></ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let champion of champions$ | async">
+              <ion-avatar slot="start"
+                ><img
+                  src="https://avatars.dicebear.com/api/adventurer/{{champion}}.svg" /></ion-avatar
+              ><ion-label>{{champion}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <p>
+            Want to be a champion? The front-end doesn't provide a way to
+            interact with the <strong>addChampion</strong> function in the smart
+            contract.
+          </p>
+          <p>
+            See if you can figure out how to interact with the smart contract
+            some other way. Open your console and refresh the page for hints on
+            getting started.
+          </p>
+          <p>
+            <strong>Make sure you are using the Rinkeby test network</strong>
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div>
+      <ion-card class="explorers">
+        <ion-card-header>
+          <ion-card-title><h2>Web3 Explorers</h2></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let explorer of explorers$ | async">
+              <ion-avatar slot="start"
+                ><img
+                  src="https://avatars.dicebear.com/api/adventurer/{{explorer}}.svg" /></ion-avatar
+              ><ion-label>{{explorer}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <p>
+            To become an explorer, you will need to complete the following
+            steps:
+          </p>
+          <ol>
+            <li>Install the MetaMask Chrome extension</li>
+            <li>Create your wallet</li>
+            <li>Switch to the Rinkeby test network</li>
+            <li>
+              Get some test ETH from a faucet: https://www.rinkeby.io/#faucet
+            </li>
+            <li>Click the button</li>
+          </ol>
+          <p>
+            <strong>Make sure you are using the Rinkeby test network</strong>
+          </p>
+          <ion-button expand="full" (click)="addExplorer()"
+            ><ion-spinner *ngIf="isAdding"></ion-spinner> Add yourself as an
+            Explorer!</ion-button
+          >
+          <ion-note *ngIf="didComplete" color="success"
+            >Nice! Once your transaction is confirmed on the blockchain your
+            address will appear above! If you want, you can look up your
+            transaction on rinkeby.etherscan.io:
+            <strong>{{transactionHash}}</strong></ion-note
+          >
+          <ion-note *ngIf="didError" color="danger"
+            >Something went wrong! Make sure to follow the steps
+            above.</ion-note
+          >
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

@@ -1,27 +1,36 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content {
+  --background: var(--ion-color-dark-tint);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.grid-container {
+  display: grid;
+  padding: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 3rem;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.explorers,
+.champions {
+  height: 500px;
 }
 
-#container a {
-  text-decoration: none;
+ion-icon {
+  position: relative;
+  top: 3px;
+}
+
+ion-spinner {
+  margin-right: 3px;
+}
+
+ion-list ion-item {
+  overflow: scroll;
+}
+
+ion-card-content {
+  padding: 2rem;
+  p {
+    font-size: 1.2em;
+    margin-bottom: 2rem;
+  }
 }
